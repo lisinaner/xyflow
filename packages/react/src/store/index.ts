@@ -47,7 +47,7 @@ const createStore = ({
       ...getInitialState({ nodes, edges, width, height, fitView, nodeOrigin, nodeExtent, defaultNodes, defaultEdges }),
       setNodes: (nodes: Node[]) => {
         const { nodeLookup, parentLookup, nodeOrigin, elevateNodesOnSelect } = get();
-        // setNodes() is called exclusively in response to user actions:
+        // setNodes() is called exclusively(唯独) in response to user actions:
         // - either when the `<ReactFlow nodes>` prop is updated in the controlled ReactFlow setup,
         // - or when the user calls something like `reactFlowInstance.setNodes()` in an uncontrolled ReactFlow setup.
         //
