@@ -16,7 +16,7 @@ type UseDragParams = {
 
 /**
  * Hook for calling XYDrag helper from @xyflow/system.
- *
+ * 这个钩子函数,是辅助使用 system的
  * @internal
  */
 export function useDrag({
