@@ -192,6 +192,7 @@ export function NodeWrapper<NodeType extends Node>({
       aria-describedby={disableKeyboardA11y ? undefined : `${ARIA_NODE_DESC_KEY}-${rfId}`}
       aria-label={node.ariaLabel}
     >
+        // useNodeId的值来自这里
       <Provider value={id}>
         <NodeComponent
           id={id}
