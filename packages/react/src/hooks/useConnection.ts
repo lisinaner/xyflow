@@ -28,6 +28,8 @@ function getSelector<NodeType extends Node = Node, SelectorReturn = ConnectionSt
  *
  * @public
  * @returns ConnectionState
+
+ * 当前有尝试的链接
  */
 export function useConnection<NodeType extends Node = Node, SelectorReturn = ConnectionState<InternalNode<NodeType>>>(
   connectionSelector?: (connection: ConnectionState<InternalNode<NodeType>>) => SelectorReturn
