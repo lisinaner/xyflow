@@ -41,6 +41,7 @@ export function NodeWrapper<NodeType extends Node>({
   nodeClickDistance,
   onError,
 }: NodeWrapperProps<NodeType>) {
+  //利用id获取store的节点数据
   const { node, internals, isParent } = useStore((s) => {
     const node = s.nodeLookup.get(id)! as InternalNode<NodeType>;
     const isParent = s.parentLookup.has(id);
