@@ -59,6 +59,7 @@ import DevTools from '../examples/DevTools';
 import Redux from '../examples/Redux';
 import MovingHandles from '../examples/MovingHandles';
 import DetachedHandle from '../examples/DetachedHandle';
+import t1 from '../examples/a1';
 
 export interface IRoute {
   name: string;
@@ -67,6 +68,11 @@ export interface IRoute {
 }
 
 const routes: IRoute[] = [
+  {
+    name: 't1',
+    path: 't1',
+    component: t1,
+  },
   {
     name: 'Add Node on edge Drop',
     path: 'add-node-edge-drop',
