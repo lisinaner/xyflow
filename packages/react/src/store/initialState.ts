@@ -14,6 +14,7 @@ import {
 } from '@xyflow/system';
 
 import type { Edge, FitViewOptions, InternalNode, Node, ReactFlowStore } from '../types';
+import { 调试对象 } from '../对象/调试对象';
 
 const getInitialState = ({
   nodes,
@@ -43,6 +44,7 @@ const getInitialState = ({
   nodeExtent?: CoordinateExtent;
 } = {}): ReactFlowStore => {
   const nodeLookup = new Map<string, InternalNode>();
+  调试对象.快速找节点&&console.log("nodeLookup",nodeLookup)
   const parentLookup = new Map();
   const connectionLookup = new Map();
   const edgeLookup = new Map();
