@@ -74,7 +74,7 @@ const routes: IRoute[] = [
     component: t1,
   },
   {
-    name: 'Add Node on edge Drop',
+    name: '放线时候增加节点',
     path: 'add-node-edge-drop',
     component: AddNodeOnEdgeDrop,
   },
