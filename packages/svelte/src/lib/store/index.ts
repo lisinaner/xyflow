@@ -15,7 +15,9 @@ import {
   updateAbsolutePositions,
   snapPosition,
   calculateNodePosition,
-  type SetCenterOptions
+  type SetCenterOptions,
+  getHandlePosition,
+  Position
 } from '@xyflow/system';
 
 import type { EdgeTypes, NodeTypes, Node, Edge, FitViewOptions } from '$lib/types';
@@ -51,6 +53,15 @@ export function createStore<NodeType extends Node = Node, EdgeType extends Edge 
 
   const updateNodePositions: UpdateNodePositions = (nodeDragItems, dragging = false) => {
     store.nodes = store.nodes.map((node) => {
+      if (store.connection.inProgress && store.connection.fromNode.id === node.id) {
+        const internalNode = store.nodeLookup.get(node.id);
+        if (internalNode) {
+          store.connection = {
+            ...store.connection,
+            from: getHandlePosition(internalNode, store.connection.fromHandle, Position.Left, true)
+          };
+        }
+      }
       const dragItem = nodeDragItems.get(node.id);
       return dragItem ? { ...node, position: dragItem.position, dragging } : node;
     });
@@ -189,10 +200,6 @@ export function createStore<NodeType extends Node = Node, EdgeType extends Edge 
       panZoom.setTranslateExtent(extent);
       store.translateExtent = extent;
     }
-  }
-
-  function setPaneClickDistance(distance: number) {
-    store.panZoom?.setClickDistance(distance);
   }
 
   function deselect<T extends Node | Edge>(
@@ -393,7 +400,6 @@ export function createStore<NodeType extends Node = Node, EdgeType extends Edge 
     setMinZoom,
     setMaxZoom,
     setTranslateExtent,
-    setPaneClickDistance,
     unselectNodesAndEdges,
     addSelectedNodes,
     addSelectedEdges,
